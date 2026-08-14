@@ -1,0 +1,122 @@
+/* Arquivo responsável por deixar a section Sobre responsiva */
+ 
+ 
+/* Notebook */
+@media (max-width: 1025px) {
+ 
+    #sobre {
+ 
+        .container {
+ 
+            .textoSobre {
+                width: 50%;
+ 
+                h3 {
+                    font-size: 26px;
+                }
+            }
+ 
+            figure {
+                width: 45%;
+ 
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+ 
+ 
+/* Tablet */
+@media (max-width: 768px) {
+ 
+    #sobre {
+ 
+        height: auto;
+ 
+        .container {
+            flex-direction: column;
+            gap: 30px;
+ 
+            .textoSobre {
+                width: 90%;
+                height: auto;
+                align-items: center;
+                text-align: center;
+ 
+                h3 {
+                    font-size: 25px;
+                }
+ 
+                p {
+                    line-height: 1.6;
+                }
+ 
+                a {
+                    width: 40%;
+                    height: 50px;
+                }
+            }
+ 
+            figure {
+                width: 90%;
+                height: auto;
+ 
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+ 
+ 
+/* Celular */
+@media (max-width: 480px) {
+ 
+    #sobre {
+ 
+        padding: 40px 15px;
+ 
+        .container {
+            padding: 30px 10px;
+            gap: 20px;
+ 
+            .textoSobre {
+                width: 100%;
+ 
+                h3 {
+                    font-size: 22px;
+                }
+ 
+                p {
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+ 
+                a {
+                    width: 60%;
+                    height: 45px;
+                }
+            }
+ 
+            figure {
+                width: 100%;
+ 
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+ 
+                figcaption {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+ 
+ 
