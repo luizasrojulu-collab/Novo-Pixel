@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
+
 
     <!-- Link da font montserrat do google fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,14 +13,43 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Silkscreen:wght@400;700&display=swap%22"
         rel="stylesheet">
- <link rel="stylesheet" href="./assets/css/style.css">
-
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 
 
 
 <body>
+
+
+
+
+    <!-- v libras para ser acessivel para todos -->
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- Tela de Loading -->
+    <div id="loading-screen">
+        <div class="loading-content">
+
+            <img src="./assets/img/logo-NovoPixel.png" alt="NovoPixel" class="loading-logo">
+
+            <l-grid size="60" speed="1.5" color="#00e5c3">
+            </l-grid>
+
+            <p>CARREGANDO...</p>
+
+        </div>
+    </div>
 
     <!-- Fundo animado -->
     <canvas id="grid"></canvas>
@@ -341,6 +370,8 @@
     </script>
 
     <script src="./assets//js/pixelPanel.js"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/+esm"></script>
 </body>
 
 </html>

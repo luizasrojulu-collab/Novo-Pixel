@@ -1365,3 +1365,82 @@ main {
         font-size: 34px;
     }
 }
+
+
+/* =========================
+   TELA DE LOADING
+========================= */
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    background: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+
+    text-align: center;
+}
+
+.loading-logo {
+    width: 180px;
+    height: auto;
+
+    animation: loadingLogo 2s ease-in-out infinite;
+}
+
+.loading-content p {
+    margin: 0;
+
+    font-family: 'Silkscreen', monospace;
+    font-size: 12px;
+
+    color: #00e5c3;
+
+    letter-spacing: 3px;
+}
+
+
+/* Animação da logo */
+
+@keyframes loadingLogo {
+
+    0% {
+        opacity: 0.5;
+        transform: scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: scale(0.96);
+    }
+
+}
+
+
+/* Quando o loading terminar */
+
+#loading-screen.loading-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}

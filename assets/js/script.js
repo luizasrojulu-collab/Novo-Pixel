@@ -524,3 +524,14 @@ const mza = new MzaCarousel(document.getElementById("mzaCarousel"), {
 
 
 
+// parte de fazer o loading desaparecer
+
+window.addEventListener("load", () => {
+
+    const loadingScreen = document.getElementById("loading-screen");
+
+    setTimeout(() => {
+        loadingScreen.classList.add("loading-hidden");
+    }, 3000);
+
+});
