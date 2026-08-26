@@ -1,27 +1,27 @@
 // =========================================================
 // CABEÇALHO DO SITE
 // =========================================================
- 
+
 const header = document.querySelector("header");
- 
- 
+
+
 // Altera o cabeçalho conforme a página é rolada
 window.addEventListener("scroll", function () {
- 
-    if (window.scrollY > 50) {
- 
-        header.style.background = "rgba(8, 13, 18, 0.97)";
- 
-        header.style.boxShadow =
-            "0 5px 30px rgba(0, 0, 0, 0.4)";
- 
-    } else {
- 
-        header.style.background = "rgba(8, 13, 18, 0.85)";
- 
-        header.style.boxShadow = "none";
-    }
- 
+
+  if (window.scrollY > 50) {
+
+    header.style.background = "rgba(8, 13, 18, 0.97)";
+
+    header.style.boxShadow =
+      "0 5px 30px rgba(0, 0, 0, 0.4)";
+
+  } else {
+
+    header.style.background = "rgba(8, 13, 18, 0.85)";
+
+    header.style.boxShadow = "none";
+  }
+
 });
 
 ///////////////parte da luiza sabino ////////////////////
@@ -37,121 +37,121 @@ const squareSize = 80;
 const grid = [];
 
 function initGrid() {
-    grid.length = 0;
+  grid.length = 0;
 
-    for (let x = 0; x < width; x += squareSize) {
-        for (let y = 0; y < height; y += squareSize) {
+  for (let x = 0; x < width; x += squareSize) {
+    for (let y = 0; y < height; y += squareSize) {
 
-            grid.push({
-                x,
-                y,
-                alpha: 0,
-                fading: false,
-                lastTouched: 0
-            });
+      grid.push({
+        x,
+        y,
+        alpha: 0,
+        fading: false,
+        lastTouched: 0
+      });
 
-        }
     }
+  }
 }
 
 function getCellAt(x, y) {
-    return grid.find(cell =>
-        x >= cell.x &&
-        x < cell.x + squareSize &&
-        y >= cell.y &&
-        y < cell.y + squareSize
-    );
+  return grid.find(cell =>
+    x >= cell.x &&
+    x < cell.x + squareSize &&
+    y >= cell.y &&
+    y < cell.y + squareSize
+  );
 }
 
 window.addEventListener("resize", () => {
 
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 
-    initGrid();
+  initGrid();
 });
 
 window.addEventListener("mousemove", (e) => {
 
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
 
-    const cell = getCellAt(mouse.x, mouse.y);
+  const cell = getCellAt(mouse.x, mouse.y);
 
-    if (cell && cell.alpha === 0) {
-        cell.alpha = 1;
-        cell.lastTouched = Date.now();
-        cell.fading = false;
-    }
+  if (cell && cell.alpha === 0) {
+    cell.alpha = 1;
+    cell.lastTouched = Date.now();
+    cell.fading = false;
+  }
 });
 
 function drawGrid() {
 
-    ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(0, 0, width, height);
 
-    const now = Date.now();
+  const now = Date.now();
 
-    for (let i = 0; i < grid.length; i++) {
+  for (let i = 0; i < grid.length; i++) {
 
-        const cell = grid[i];
+    const cell = grid[i];
 
-        // Começa a desaparecer depois de 500ms
-        if (
-            cell.alpha > 0 &&
-            !cell.fading &&
-            now - cell.lastTouched > 500
-        ) {
-            cell.fading = true;
-        }
-
-        // Fade
-        if (cell.fading) {
-
-            cell.alpha -= 0.02;
-
-            if (cell.alpha <= 0) {
-                cell.alpha = 0;
-                cell.fading = false;
-            }
-        }
-
-        if (cell.alpha > 0) {
-
-            const centerX = cell.x + squareSize / 2;
-            const centerY = cell.y + squareSize / 2;
-
-            const gradient = ctx.createRadialGradient(
-                centerX,
-                centerY,
-                5,
-                centerX,
-                centerY,
-                squareSize
-            );
-
-            gradient.addColorStop(
-                0,
-                `rgba(0, 255, 204, ${cell.alpha})`
-            );
-
-            gradient.addColorStop(
-                1,
-                `rgba(0, 255, 204, 0)`
-            );
-
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = 1.3;
-
-            ctx.strokeRect(
-                cell.x + 0.5,
-                cell.y + 0.5,
-                squareSize - 1,
-                squareSize - 1
-            );
-        }
+    // Começa a desaparecer depois de 500ms
+    if (
+      cell.alpha > 0 &&
+      !cell.fading &&
+      now - cell.lastTouched > 500
+    ) {
+      cell.fading = true;
     }
 
-    requestAnimationFrame(drawGrid);
+    // Fade
+    if (cell.fading) {
+
+      cell.alpha -= 0.02;
+
+      if (cell.alpha <= 0) {
+        cell.alpha = 0;
+        cell.fading = false;
+      }
+    }
+
+    if (cell.alpha > 0) {
+
+      const centerX = cell.x + squareSize / 2;
+      const centerY = cell.y + squareSize / 2;
+
+      const gradient = ctx.createRadialGradient(
+        centerX,
+        centerY,
+        5,
+        centerX,
+        centerY,
+        squareSize
+      );
+
+      gradient.addColorStop(
+        0,
+        `rgba(0, 255, 204, ${cell.alpha})`
+      );
+
+      gradient.addColorStop(
+        1,
+        `rgba(0, 255, 204, 0)`
+      );
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 1.3;
+
+      ctx.strokeRect(
+        cell.x + 0.5,
+        cell.y + 0.5,
+        squareSize - 1,
+        squareSize - 1
+      );
+    }
+  }
+
+  requestAnimationFrame(drawGrid);
 }
 
 initGrid();
@@ -382,7 +382,7 @@ class MzaCarousel {
     try {
       if (this.state.pointerId != null)
         this.viewport.releasePointerCapture(this.state.pointerId);
-    } catch {}
+    } catch { }
     this.state.pointerId = null;
     if (this.state.pausedAt) {
       this.state.startTime += performance.now() - this.state.pausedAt;
@@ -511,12 +511,12 @@ const carousel = document.getElementById("mzaCarousel");
 
 console.log("CARROSSEL:", carousel);
 console.log(
-    "VIEWPORT:",
-    carousel?.querySelector(".mzaCarousel-viewport")
+  "VIEWPORT:",
+  carousel?.querySelector(".mzaCarousel-viewport")
 );
 console.log(
-    "TRACK:",
-    carousel?.querySelector(".mzaCarousel-track")
+  "TRACK:",
+  carousel?.querySelector(".mzaCarousel-track")
 );
 const mza = new MzaCarousel(document.getElementById("mzaCarousel"), {
   transitionMs: 900
@@ -528,10 +528,101 @@ const mza = new MzaCarousel(document.getElementById("mzaCarousel"), {
 
 window.addEventListener("load", () => {
 
-    const loadingScreen = document.getElementById("loading-screen");
+  const loadingScreen = document.getElementById("loading-screen");
 
-    setTimeout(() => {
-        loadingScreen.classList.add("loading-hidden");
-    }, 3000);
+  setTimeout(() => {
+    loadingScreen.classList.add("loading-hidden");
+  }, 3000);
 
 });
+
+/* =========================================
+   CURSOR NOVOPIXEL
+========================================= */
+
+(() => {
+
+  const cursor = document.getElementById("np-cursor");
+  const ring = document.getElementById("np-cursor-ring");
+
+  if (!cursor || !ring) return;
+
+  let x = 0;
+  let y = 0;
+
+  let ringX = 0;
+  let ringY = 0;
+
+  document.addEventListener("mousemove", (event) => {
+
+    x = event.clientX;
+    y = event.clientY;
+
+    cursor.style.left = `${x}px`;
+    cursor.style.top = `${y}px`;
+
+    /* Partícula */
+    const particle = document.createElement("div");
+
+    particle.className = "np-particle";
+
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => {
+      particle.remove();
+    }, 500);
+
+  });
+
+
+  /* Movimento suave do anel */
+
+  function updateRing() {
+
+    ringX += (x - ringX) * 0.08;
+    ringY += (y - ringY) * 0.08;
+
+    
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+
+    requestAnimationFrame(updateRing);
+  }
+
+  updateRing();
+
+
+  /* Hover */
+
+  const elementos = document.querySelectorAll(
+    "a, button, input, textarea, select, .card"
+  );
+
+  elementos.forEach((elemento) => {
+
+    elemento.addEventListener("mouseenter", () => {
+      document.body.classList.add("np-hover");
+    });
+
+    elemento.addEventListener("mouseleave", () => {
+      document.body.classList.remove("np-hover");
+    });
+
+  });
+
+
+  /* Clique */
+
+  document.addEventListener("mousedown", () => {
+    document.body.classList.add("np-click");
+  });
+
+  document.addEventListener("mouseup", () => {
+    document.body.classList.remove("np-click");
+  });
+
+})();
+

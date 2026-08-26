@@ -1575,3 +1575,231 @@ button:hover {
     }
 
 }
+
+/* =========================================
+   CURSOR NOVOPIXEL
+========================================= */
+
+html,
+body,
+a,
+button,
+input,
+textarea,
+select {
+    cursor: none !important;
+}
+
+/* Núcleo */
+#np-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 16px;
+    height: 16px;
+
+    pointer-events: none;
+    z-index: 99999;
+
+    transform: translate(-50%, -50%);
+
+    transition: transform 0.12s steps(2);
+}
+
+/* Quadrado central */
+.np-core {
+    position: absolute;
+
+    left: 5px;
+    top: 5px;
+
+    width: 6px;
+    height: 6px;
+
+    background: #00ff88;
+
+    box-shadow:
+        0 0 5px #00ff88,
+        0 0 12px #00ff88;
+}
+
+/* =========================================
+   PIXELS AO REDOR
+========================================= */
+
+.np-corner {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: #00ff88;
+
+    box-shadow: 0 0 5px #00ff88;
+}
+
+/* Superior esquerdo */
+.corner-1 {
+    left: 0;
+    top: 0;
+}
+
+/* Superior direito */
+.corner-2 {
+    right: 0;
+    top: 0;
+}
+
+/* Inferior esquerdo */
+.corner-3 {
+    left: 0;
+    bottom: 0;
+}
+
+/* Inferior direito */
+.corner-4 {
+    right: 0;
+    bottom: 0;
+}
+
+
+/* =========================================
+   ANEL
+========================================= */
+
+#np-cursor-ring {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid rgba(0, 255, 136, 0.45);
+
+    pointer-events: none;
+    z-index: 99998;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        width 0.2s steps(3),
+        height 0.2s steps(3),
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+body.np-hover #np-cursor-ring {
+    width: 44px;
+    height: 44px;
+
+    border-color: #00ff88;
+
+    box-shadow:
+        0 0 8px rgba(0, 255, 136, 0.5),
+        inset 0 0 8px rgba(0, 255, 136, 0.15);
+}
+
+body.np-hover #np-cursor {
+    transform:
+        translate(-50%, -50%)
+        scale(1.3);
+}
+
+
+/* =========================================
+   CLIQUE SUAVE
+========================================= */
+
+#np-cursor,
+#np-cursor-ring {
+    transition:
+        transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+body.np-click #np-cursor {
+    transform:
+        translate(-50%, -50%)
+        scale(0.85);
+}
+
+body.np-click #np-cursor-ring {
+    width: 52px;
+    height: 52px;
+
+    border-color: #00ff88;
+
+    box-shadow:
+        0 0 8px #00ff88,
+        0 0 18px rgba(0, 255, 136, 0.35);
+}
+
+
+/* =========================================
+   RASTRO DE PIXELS
+========================================= */
+
+.np-particle {
+    position: fixed;
+
+    width: 3px;
+    height: 3px;
+
+    background: #00ff88;
+
+    pointer-events: none;
+
+    z-index: 99997;
+
+    animation: np-particle 0.5s steps(5) forwards;
+}
+
+@keyframes np-particle {
+
+    0% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 768px) {
+
+    html,
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: auto !important;
+    }
+
+    #np-cursor,
+    #np-cursor-ring,
+    .np-particle {
+        display: none;
+    }
+}
+
