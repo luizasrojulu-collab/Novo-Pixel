@@ -1557,23 +1557,7 @@ button:hover {
     box-shadow: 0 5px 15px rgba(64, 224, 208, 0.3);
 }
 
-/* ===== CELULAR ===== */
 
-@media (max-width: 600px) {
-
-    body {
-        padding: 40px 15px;
-    }
-
-    h1 {
-        font-size: 30px;
-    }
-
-    form {
-        padding: 25px 20px;
-    }
-
-}
 
 /* =========================================
    CURSOR NOVOPIXEL
@@ -1777,28 +1761,6 @@ body.np-click #np-cursor-ring {
 }
 
 
-/* =========================================
-   CELULAR
-========================================= */
-
-@media (max-width: 768px) {
-
-    html,
-    body,
-    a,
-    button,
-    input,
-    textarea,
-    select {
-        cursor: auto !important;
-    }
-
-    #np-cursor,
-    #np-cursor-ring,
-    .np-particle {
-        display: none;
-    }
-}
 
 
 
@@ -2303,28 +2265,3 @@ body.np-click #np-cursor-ring {
 }
 
 
-/* =========================================================
-   CELULAR
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .np-servicos {
-        padding: 70px 20px;
-    }
-
-    .np-servicos-header h2 {
-        font-size: 36px;
-    }
-
-    .np-servicos-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .np-servico-card {
-        min-height: 320px;
-
-        padding: 30px;
-    }
-
-}
