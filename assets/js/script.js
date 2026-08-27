@@ -532,7 +532,7 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     loadingScreen.classList.add("loading-hidden");
-  }, 3000);
+  }, 500);
 
 });
 
@@ -585,7 +585,7 @@ window.addEventListener("load", () => {
     ringX += (x - ringX) * 0.08;
     ringY += (y - ringY) * 0.08;
 
-    
+
     ring.style.left = `${ringX}px`;
     ring.style.top = `${ringY}px`;
 
