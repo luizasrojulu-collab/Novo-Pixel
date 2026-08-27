@@ -1803,3 +1803,544 @@ body.np-click #np-cursor-ring {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   NOVOPIXEL - SEÇÃO DE SERVIÇOS
+========================================================= */
+
+.np-servicos {
+    position: relative;
+    width: 100%;
+    padding: 100px 4%;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0, 229, 195, 0.10),
+            transparent 45%
+        );
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.np-servicos-header {
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+    margin: 0 auto 60px;
+
+    text-align: center;
+}
+
+.np-label {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    color: #00e5c3;
+
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 195, 0.7);
+}
+
+.np-servicos-header h2 {
+    margin: 0 0 20px;
+
+    color: #ffffff;
+
+    font-size: 50px;
+    line-height: 1.1;
+}
+
+.np-servicos-header h2 span {
+    color: #00e5c3;
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 195, 0.7),
+        0 0 30px rgba(0, 229, 195, 0.3);
+}
+
+.np-servicos-header p {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #89979b;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   ÁREA DOS CARDS
+========================================================= */
+
+.np-servicos-grid {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1550px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    /* 6 CARDS LADO A LADO */
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.np-servico-card {
+    position: relative;
+
+    min-height: 350px;
+
+    padding: 30px 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13, 29, 33, 0.98),
+            rgba(4, 10, 13, 0.98)
+        );
+
+    border: 1px solid rgba(0, 229, 195, 0.25);
+
+    /* PONTAS ARREDONDADAS */
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+}
+
+
+/* =========================================================
+   BRILHO INTERNO
+========================================================= */
+
+.np-servico-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -100px;
+
+    background: #00e5c3;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    filter: blur(70px);
+
+    transition: 0.5s;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LINHA DE VARREDURA
+========================================================= */
+
+.np-servico-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: -5px;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00e5c3,
+        transparent
+    );
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 10px #00e5c3,
+        0 0 25px #00e5c3;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HOVER DO CARD
+========================================================= */
+
+.np-servico-card:hover {
+    transform: translateY(-10px);
+
+    border-color: #00e5c3;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 38, 38, 0.98),
+            rgba(4, 13, 16, 1)
+        );
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 195, 0.18),
+        0 15px 40px rgba(0, 0, 0, 0.7),
+        inset 0 0 30px rgba(0, 229, 195, 0.04);
+}
+
+
+/* BRILHO NO HOVER */
+
+.np-servico-card:hover::before {
+    opacity: 0.12;
+}
+
+
+/* LINHA ANIMADA */
+
+.np-servico-card:hover::after {
+    opacity: 1;
+
+    animation: npScan 2s linear infinite;
+}
+
+
+/* =========================================================
+   NÚMERO
+========================================================= */
+
+.np-numero {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    color: rgba(0, 229, 195, 0.35);
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+.np-servico-card:hover .np-numero {
+    color: #00e5c3;
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 195, 0.8);
+}
+
+
+/* =========================================================
+   ÍCONE
+========================================================= */
+
+.np-icone {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 30px;
+
+    background: rgba(0, 229, 195, 0.04);
+
+    border: 1px solid rgba(0, 229, 195, 0.45);
+
+    border-radius: 10px;
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 18px;
+
+    transition: 0.4s;
+}
+
+
+/* ÍCONE NO HOVER */
+
+.np-servico-card:hover .np-icone {
+    background: #00e5c3;
+
+    border-color: #00e5c3;
+
+    color: #061014;
+
+    transform:
+        scale(1.08)
+        rotate(4deg);
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 195, 0.7),
+        0 0 30px rgba(0, 229, 195, 0.3);
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.np-servico-card h3 {
+    position: relative;
+
+    margin: 0 0 15px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    line-height: 1.3;
+
+    transition: 0.3s;
+}
+
+.np-servico-card:hover h3 {
+    color: #00e5c3;
+
+    text-shadow:
+        0 0 12px rgba(0, 229, 195, 0.35);
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.np-servico-card p {
+    margin: 0 0 25px;
+
+    color: #7f8c91;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.np-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+.np-tags span {
+    padding: 5px 7px;
+
+    background: rgba(0, 229, 195, 0.03);
+
+    border: 1px solid rgba(0, 229, 195, 0.25);
+
+    border-radius: 4px;
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 0.8px;
+
+    transition: 0.3s;
+}
+
+.np-servico-card:hover .np-tags span {
+    background: rgba(0, 229, 195, 0.08);
+
+    border-color: rgba(0, 229, 195, 0.55);
+}
+
+
+/* =========================================================
+   LINHA INFERIOR
+========================================================= */
+
+.np-linha {
+    position: absolute;
+
+    left: 22px;
+    bottom: 20px;
+
+    width: 30px;
+    height: 2px;
+
+    background: #00e5c3;
+
+    box-shadow:
+        0 0 8px #00e5c3;
+
+    transition: 0.4s;
+}
+
+.np-servico-card:hover .np-linha {
+    width: 80px;
+
+    box-shadow:
+        0 0 10px #00e5c3,
+        0 0 20px rgba(0, 229, 195, 0.5);
+}
+
+
+/* =========================================================
+   ANIMAÇÃO DA LINHA
+========================================================= */
+
+@keyframes npScan {
+
+    0% {
+        top: 0%;
+    }
+
+    100% {
+        top: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   ANIMAÇÃO DE ENTRADA
+========================================================= */
+
+.np-servico-card {
+    animation: npCardEntrada 0.8s ease both;
+}
+
+.np-servico-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.np-servico-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.np-servico-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.np-servico-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.np-servico-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.np-servico-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes npCardEntrada {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .np-servicos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .np-servicos {
+        padding: 70px 20px;
+    }
+
+    .np-servicos-header h2 {
+        font-size: 36px;
+    }
+
+    .np-servicos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .np-servico-card {
+        min-height: 320px;
+
+        padding: 30px;
+    }
+
+}
