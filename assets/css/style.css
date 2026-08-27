@@ -1828,6 +1828,7 @@ body.np-click #np-cursor-ring {
             transparent 45%
         );
     overflow: hidden;
+    top: 180px;
 }
 
 
