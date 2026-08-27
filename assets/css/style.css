@@ -762,31 +762,28 @@ body {
     will-change: transform, filter;
 
     #amazon {
-        background-image: url('../img/amazon.png');
+        
         background-repeat: no-repeat;
         background-size: cover;
     }
 
     #spotify {
-        background-image: url("../img/spotify.png");
+       
         background-repeat: no-repeat;
         background-size: 100% 102%;
     }
 
     #metaIa {
-        background-image: url("../img/meta\ ia.png");
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
 
     #senai {
-        background-image: url("../img/senai.png");
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
 
     #microsofth {
-        background-image: url("../img/microsoffity.png");
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
@@ -1781,6 +1778,12 @@ body.np-click #np-cursor-ring {
     width: 100%;
     padding: 100px 4%;
 
+    height: 100dvh;
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(0, 229, 195, 0.10),
+            transparent 45%);
+    height: 100dvh;
     overflow: hidden;
     top: 180px;
 }
@@ -2263,5 +2266,3 @@ body.np-click #np-cursor-ring {
     }
 
 }
-
-
