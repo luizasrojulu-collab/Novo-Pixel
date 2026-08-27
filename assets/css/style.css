@@ -2266,3 +2266,789 @@ body.np-click #np-cursor-ring {
     }
 
 }
+
+
+
+
+
+
+/* =====================================================
+   NOVOPIXEL
+   PÁGINA DE CONTATO
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+
+    min-height: 100vh;
+
+    background: #030607;
+
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   FUNDO FUTURISTA
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+
+        linear-gradient(
+            rgba(0, 229, 195, 0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 229, 195, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    z-index: -2;
+}
+
+
+/* =====================================================
+   BRILHO DO FUNDO
+===================================================== */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    right: -150px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background: #00e5c3;
+
+    filter: blur(180px);
+
+    opacity: 0.06;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =====================================================
+   CONTAINER PRINCIPAL
+===================================================== */
+
+.contato-container {
+
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 90px 0 100px;
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo-contato {
+
+    max-width: 850px;
+
+    margin-bottom: 60px;
+}
+
+
+.codigo {
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+
+.titulo-contato h1 {
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+
+    font-size: clamp(45px, 6vw, 78px);
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
+}
+
+
+.titulo-contato h1 span {
+
+    color: #00e5c3;
+
+    text-shadow:
+        0 0 25px rgba(0, 229, 195, 0.35);
+}
+
+
+.titulo-contato p {
+
+    max-width: 620px;
+
+    color: #738083;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   ÁREA DE CONTATO
+===================================================== */
+
+.contato-area {
+
+    display: grid;
+
+    grid-template-columns: 0.75fr 1.25fr;
+
+    gap: 25px;
+
+    align-items: stretch;
+}
+
+
+/* =====================================================
+   PAINEL ESQUERDO
+===================================================== */
+
+.painel {
+
+    position: relative;
+
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 24, 27, 0.95),
+            rgba(4, 9, 11, 0.98)
+        );
+
+    border:
+        1px solid rgba(0, 229, 195, 0.18);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+}
+
+
+.painel::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -130px;
+    top: -130px;
+
+    border-radius: 50%;
+
+    background: #00e5c3;
+
+    filter: blur(90px);
+
+    opacity: 0.07;
+}
+
+
+/* =====================================================
+   LOGO DO PAINEL
+===================================================== */
+
+.painel-topo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 60px;
+}
+
+
+.logo-mini {
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #00e5c3;
+
+    border:
+        1px solid #00e5c3;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 195, 0.15);
+}
+
+
+.painel-topo strong {
+
+    display: block;
+
+    font-size: 14px;
+}
+
+
+.painel-topo small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #617073;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   TÍTULO DO PAINEL
+===================================================== */
+
+.painel h2 {
+
+    max-width: 280px;
+
+    margin-bottom: 30px;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+}
+
+
+.painel h2 span {
+
+    color: #00e5c3;
+}
+
+
+/* =====================================================
+   VANTAGENS
+===================================================== */
+
+.vantagem {
+
+    display: flex;
+
+    gap: 15px;
+
+    padding: 20px 0;
+
+    border-top:
+        1px solid rgba(255,255,255,0.06);
+}
+
+
+.numero {
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    padding-top: 3px;
+}
+
+
+.vantagem h3 {
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+
+.vantagem p {
+
+    color: #667477;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    border:
+        1px solid rgba(0, 229, 195, 0.15);
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 229, 195, 0.025);
+}
+
+
+.bolinha {
+
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #00e5c3;
+
+    box-shadow:
+        0 0 12px #00e5c3;
+
+    animation: pulsar 2s infinite;
+}
+
+
+@keyframes pulsar {
+
+    0% {
+        opacity: 1;
+        box-shadow: 0 0 5px #00e5c3;
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 18px #00e5c3;
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 5px #00e5c3;
+    }
+}
+
+
+.status strong {
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.status p {
+
+    margin-top: 4px;
+
+    color: #687679;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   FORMULÁRIO
+===================================================== */
+
+.formulario {
+
+    padding: 40px;
+
+    background:
+        rgba(8, 17, 19, 0.85);
+
+    border:
+        1px solid rgba(0, 229, 195, 0.25);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.4);
+}
+
+
+/* =====================================================
+   CABEÇALHO DO FORMULÁRIO
+===================================================== */
+
+.form-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+}
+
+
+.form-header span {
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.form-header h2 {
+
+    margin-top: 10px;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+}
+
+
+.form-id {
+
+    color: #4d5d60;
+
+    font-family: monospace;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   CAMPOS
+===================================================== */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 22px;
+}
+
+
+.campo label {
+
+    margin-bottom: 9px;
+
+    color: #00e5c3;
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   DOIS CAMPOS
+===================================================== */
+
+.dupla {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   INPUT / SELECT / TEXTAREA
+===================================================== */
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    padding: 15px 17px;
+
+    color: #ffffff;
+
+    background:
+        rgba(0,0,0,0.25);
+
+    border:
+        1px solid rgba(0, 229, 195, 0.15);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #526164;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color: #00e5c3;
+
+    background:
+        rgba(0, 229, 195, 0.035);
+
+    box-shadow:
+        0 0 15px rgba(0,229,195,0.08);
+}
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+select {
+
+    cursor: pointer;
+}
+
+
+select option {
+
+    background: #071012;
+
+    color: white;
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+textarea {
+
+    min-height: 140px;
+
+    resize: vertical;
+}
+
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+
+form button {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #00e5c3;
+
+    color: #03100f;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+form button span {
+
+    margin-left: 15px;
+
+    font-size: 17px;
+}
+
+
+form button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 20px rgba(0,229,195,0.5),
+        0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+/* =====================================================
+   MENSAGEM DO JAVASCRIPT
+===================================================== */
+
+#mensagemStatus {
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #00e5c3;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .contato-area {
+
+        grid-template-columns: 1fr;
+    }
+
+    .painel {
+
+        display: none;
+    }
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .contato-container {
+
+        width: 92%;
+
+        padding: 60px 0;
+    }
+
+
+    .titulo-contato h1 {
+
+        font-size: 45px;
+    }
+
+
+    .titulo-contato p {
+
+        font-size: 13px;
+    }
+
+
+    .formulario {
+
+        padding: 25px 20px;
+
+        border-radius: 16px;
+    }
+
+
+    .form-header h2 {
+
+        font-size: 23px;
+    }
+
+
+    .dupla {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+}
