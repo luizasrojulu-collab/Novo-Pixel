@@ -86,6 +86,7 @@ header {
     position: fixed;
 
     background: transparent !important;
+    box-shadow: none !important;
     /* O z index manipula as camadas do elemento  */
     z-index: 9999;
 
