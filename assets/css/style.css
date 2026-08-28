@@ -3050,3 +3050,211 @@ form button:hover {
         0 0 10px #00e5c3,
         0 0 20px rgba(0, 229, 195, 0.5);
 }
+
+
+
+/* estilizando o botao de voltar ao topo */
+
+/* =========================================
+   NOVOPIXEL - BOTÃO VOLTAR AO TOPO
+========================================= */
+
+#backToTop {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+    width: 54px;
+    height: 54px;
+
+    background: rgba(0, 0, 0, 0.85);
+    color: #00ff88;
+
+    border: 1px solid #00ff88;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+
+    z-index: 9999;
+
+    /* Pixel */
+    clip-path: polygon(
+        0 7px,
+        7px 7px,
+        7px 0,
+        calc(100% - 7px) 0,
+        calc(100% - 7px) 7px,
+        100% 7px,
+        100% calc(100% - 7px),
+        calc(100% - 7px) calc(100% - 7px),
+        calc(100% - 7px) 100%,
+        7px 100%,
+        7px calc(100% - 7px),
+        0 calc(100% - 7px)
+    );
+}
+
+
+/* BOTÃO VISÍVEL */
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* BRILHO AO PASSAR O MOUSE */
+#backToTop:hover {
+    background: #00ff88;
+    color: #000;
+
+    box-shadow:
+        0 0 8px #00ff88,
+        0 0 20px rgba(0, 255, 136, 0.6),
+        0 0 40px rgba(0, 255, 136, 0.25);
+
+    transform: translateY(-5px);
+}
+
+
+/* SETA */
+#backToTop .arrow {
+    font-family: "Silkscreen", monospace;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    line-height: 1;
+
+    transition:
+        transform 0.2s ease,
+        text-shadow 0.2s ease;
+}
+
+
+/* ANIMAÇÃO DA SETA */
+#backToTop:hover .arrow {
+    transform: translateY(-4px);
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================
+   CANTOS PIXELADOS
+========================================= */
+
+.pixel-corner {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    background: #00ff88;
+
+    transition: background 0.2s ease;
+}
+
+.corner-1 {
+    top: 5px;
+    left: 5px;
+}
+
+.corner-2 {
+    top: 5px;
+    right: 5px;
+}
+
+.corner-3 {
+    bottom: 5px;
+    left: 5px;
+}
+
+.corner-4 {
+    bottom: 5px;
+    right: 5px;
+}
+
+#backToTop:hover .pixel-corner {
+    background: #000;
+}
+
+
+/* =========================================
+   EFEITO GLITCH
+========================================= */
+
+#backToTop::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border: 1px solid #00ff88;
+
+    opacity: 0;
+
+    transform: translate(3px, -2px);
+
+    pointer-events: none;
+}
+
+#backToTop:hover::before {
+    animation: glitchButton 0.35s steps(2);
+}
+
+@keyframes glitchButton {
+
+    0% {
+        opacity: 0;
+        transform: translate(0);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(3px, -2px);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translate(-3px, 2px);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translate(2px, 1px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(0);
+    }
+}
+
+
+/* =========================================
+   CLIQUE
+========================================= */
+
+#backToTop:active {
+    transform: translateY(-2px) scale(0.9);
+
+    box-shadow:
+        0 0 5px #00ff88;
+}
