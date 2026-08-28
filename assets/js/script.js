@@ -660,3 +660,58 @@ backToTop.addEventListener("click", () => {
     });
 
 });
+
+
+
+
+
+// #region Autodigit 
+
+
+
+const frases = [
+  "Sua ideia.",
+  "Sua empresa.",
+  "Seu site.",
+  "Seu negócio."
+];
+
+const el = document.getElementById('autodigit');
+
+const VELOCIDADE_DIGITACAO = 70;   // ms por caractere ao escrever
+const VELOCIDADE_APAGAR = 35;      // ms por caractere ao apagar
+const PAUSA_FRASE = 1800;          // pausa com frase completa
+const PAUSA_PROXIMA = 400;         // pausa antes de escrever a próxima
+
+let fraseAtual = 0;
+let charAtual = 0;
+let apagando = false;
+
+function loop() {
+  const textoAlvo = frases[fraseAtual];
+
+  if (!apagando) {
+    charAtual++;
+    el.textContent = textoAlvo.slice(0, charAtual);
+
+    if (charAtual === textoAlvo.length) {
+      apagando = true;
+      setTimeout(loop, PAUSA_FRASE);
+      return;
+    }
+    setTimeout(loop, VELOCIDADE_DIGITACAO);
+  } else {
+    charAtual--;
+    el.textContent = textoAlvo.slice(0, charAtual);
+
+    if (charAtual === 0) {
+      apagando = false;
+      fraseAtual = (fraseAtual + 1) % frases.length;
+      setTimeout(loop, PAUSA_PROXIMA);
+      return;
+    }
+    setTimeout(loop, VELOCIDADE_APAGAR);
+  }
+}
+
+loop();
