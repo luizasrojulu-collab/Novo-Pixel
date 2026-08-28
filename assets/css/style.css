@@ -50,6 +50,13 @@ main {
     position: relative;
     z-index: 1;
     box-sizing: border-box;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(0, 229, 195, 0.10),
+            transparent 45%);
+
+    background-attachment: fixed;
 }
 
 scroll .container {
@@ -762,13 +769,13 @@ body {
     will-change: transform, filter;
 
     #amazon {
-        
+
         background-repeat: no-repeat;
         background-size: cover;
     }
 
     #spotify {
-       
+
         background-repeat: no-repeat;
         background-size: 100% 102%;
     }
@@ -1864,10 +1871,7 @@ body.np-click #np-cursor-ring {
     padding: 100px 4%;
 
     height: 100dvh;
-    background:
-        radial-gradient(circle at 50% 0%,
-            rgba(0, 229, 195, 0.10),
-            transparent 45%);
+
     height: 100dvh;
     overflow: hidden;
     top: 180px;
@@ -2403,25 +2407,19 @@ body::before {
 
     background-image:
 
-        linear-gradient(
-            rgba(0, 229, 195, 0.035) 1px,
-            transparent 1px
-        ),
+        linear-gradient(rgba(0, 229, 195, 0.035) 1px,
+            transparent 1px),
 
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(0, 229, 195, 0.035) 1px,
-            transparent 1px
-        );
+            transparent 1px);
 
     background-size: 60px 60px;
 
     mask-image:
-        linear-gradient(
-            to bottom,
+        linear-gradient(to bottom,
             black,
-            transparent 90%
-        );
+            transparent 90%);
 
     z-index: -2;
 }
@@ -2559,11 +2557,9 @@ body::after {
     padding: 35px;
 
     background:
-        linear-gradient(
-            145deg,
+        linear-gradient(145deg,
             rgba(10, 24, 27, 0.95),
-            rgba(4, 9, 11, 0.98)
-        );
+            rgba(4, 9, 11, 0.98));
 
     border:
         1px solid rgba(0, 229, 195, 0.18);
@@ -2695,7 +2691,7 @@ body::after {
     padding: 20px 0;
 
     border-top:
-        1px solid rgba(255,255,255,0.06);
+        1px solid rgba(255, 255, 255, 0.06);
 }
 
 
@@ -2831,10 +2827,10 @@ body::after {
     border-radius: 22px;
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,0.4);
+        0 20px 70px rgba(0, 0, 0, 0.4);
 
 
-    height: 750px;  
+    height: 750px;
     max-height: 750px;
 }
 
@@ -2944,7 +2940,7 @@ textarea {
     color: #ffffff;
 
     background:
-        rgba(0,0,0,0.25);
+        rgba(0, 0, 0, 0.25);
 
     border:
         1px solid rgba(0, 229, 195, 0.15);
@@ -2978,7 +2974,7 @@ textarea:focus {
         rgba(0, 229, 195, 0.035);
 
     box-shadow:
-        0 0 15px rgba(0,229,195,0.08);
+        0 0 15px rgba(0, 229, 195, 0.08);
 }
 
 
@@ -3055,8 +3051,8 @@ form button:hover {
     transform: translateY(-3px);
 
     box-shadow:
-        0 0 20px rgba(0,229,195,0.5),
-        0 10px 30px rgba(0,0,0,0.4);
+        0 0 20px rgba(0, 229, 195, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -3210,20 +3206,18 @@ form button:hover {
     z-index: 9999;
 
     /* Pixel */
-    clip-path: polygon(
-        0 7px,
-        7px 7px,
-        7px 0,
-        calc(100% - 7px) 0,
-        calc(100% - 7px) 7px,
-        100% 7px,
-        100% calc(100% - 7px),
-        calc(100% - 7px) calc(100% - 7px),
-        calc(100% - 7px) 100%,
-        7px 100%,
-        7px calc(100% - 7px),
-        0 calc(100% - 7px)
-    );
+    clip-path: polygon(0 7px,
+            7px 7px,
+            7px 0,
+            calc(100% - 7px) 0,
+            calc(100% - 7px) 7px,
+            100% 7px,
+            100% calc(100% - 7px),
+            calc(100% - 7px) calc(100% - 7px),
+            calc(100% - 7px) 100%,
+            7px 100%,
+            7px calc(100% - 7px),
+            0 calc(100% - 7px));
 }
 
 
