@@ -20,8 +20,6 @@
 
 
 
-
-
 <body>
 
 
@@ -58,7 +56,7 @@
             <l-grid size="60" speed="1.5" color="#00e5c3">
             </l-grid>
 
-            <p data-aos="fade-up">CARREGANDO...</p>
+            <p>CARREGANDO...</p>
 
         </div>
     </div>
@@ -67,9 +65,6 @@
     <canvas id="grid"></canvas>
 
     <!-- Conteúdo principal -->
-
-
-    <canvas id="grid"></canvas>
 
     <header>
         <div class="container">
@@ -209,12 +204,6 @@
 
 
 
-
-
-
-
-
-
     <!-- =========================
      SEÇÃO DE SERVIÇOS
     ========================= -->
@@ -240,7 +229,7 @@
         <div class="np-servicos-grid">
 
             <!-- CARD 01 -->
-            <article class="np-servico-card">
+            <article class="np-servico-card" data-aos="fade-up" data-aos-delay="0">
 
                 <span class="np-numero">01</span>
 
@@ -267,7 +256,7 @@
 
 
             <!-- CARD 02 -->
-            <article class="np-servico-card">
+            <article class="np-servico-card" data-aos="fade-up" data-aos-delay="100">
 
                 <span class="np-numero">02</span>
 
@@ -294,7 +283,7 @@
 
 
             <!-- CARD 03 -->
-            <article class="np-servico-card">
+            <article class="np-servico-card" data-aos="fade-up" data-aos-delay="200">
 
                 <span class="np-numero">03</span>
 
@@ -321,7 +310,7 @@
 
 
             <!-- CARD 04 -->
-            <article class="np-servico-card">
+            <article class="np-servico-card" data-aos="fade-up" data-aos-delay="300">
 
                 <span class="np-numero">04</span>
 
@@ -348,7 +337,7 @@
 
 
             <!-- CARD 05 -->
-            <article class="np-servico-card">
+            <article class="np-servico-card" data-aos="fade-up" data-aos-delay="400">
 
                 <span class="np-numero">05</span>
 
@@ -375,7 +364,7 @@
 
 
             <!-- CARD 06 -->
-            <article class="np-servico-card">
+            <article class="np-servico-card" data-aos="fade-up" data-aos-delay="500">
 
                 <span class="np-numero">06</span>
 
@@ -404,32 +393,6 @@
 
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Animação de fundo -->
-    <canvas id="grid"></canvas>
-
-
-    <!-- Conteúdo por cima -->
 
 
 
@@ -865,22 +828,23 @@
         </div>
     </footer>
 
-    <script src="./assets/js/script.js">
+    <script src="./assets/js/script.js"></script>
 
-    </script>
-
-    <script src="./assets//js/pixelPanel.js"></script>
+    <script src="./assets/js/pixelPanel.js"></script>
 
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/+esm"></script>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
-        AOS.init({
-            duration: 800,
-            easing: "ease-out-cubic",
-            once: true,
-            offset: 100
+        // Aguarda o DOM estar completamente carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: "ease-out-cubic",
+                once: true,
+                offset: 100
+            });
         });
     </script>
 </body>
