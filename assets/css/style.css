@@ -820,8 +820,8 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg,
-            rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.45) 45%,
+            rgba(39, 175, 141, 0.507),
+            rgba(47, 175, 147, 0.349) 45%,
             rgba(0, 0, 0, 0.25) 100%);
 }
 
@@ -860,7 +860,7 @@ body {
     inset: auto 20px 85px 20px;
     z-index: 2;
     max-width: 60ch;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(42, 134, 111, 0);
     padding: 20px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -877,35 +877,6 @@ body {
     z-index: 2;
 }
 
-.mzaBtn {
-    appearance: none;
-    border: 1px solid #9ef7d2;
-    border-radius: 14px;
-    padding: 15px 20px;
-    font-weight: 700;
-    color: #0b0e13;
-    background-image: linear-gradient(180deg,
-            #9ef7d2,
-            #97ebc8,
-            #8fe0be,
-            #88d5b5,
-            #81c9ab,
-            #7abea2,
-            #73b398,
-            #6ca88f,
-            #659d86,
-            #5e937d,
-            #588874,
-            #517e6b);
-    box-shadow: 0 3px 15px var(--mzaC-glow);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.mzaBtn:active {
-    transform: translateY(1px);
-    box-shadow: 0 3px 10px rgba(130, 160, 255, 0.25);
-}
 
 .mzaCarousel-controls {
     position: absolute;
@@ -924,7 +895,7 @@ body {
     height: 44px;
     border-radius: 50%;
     border: 0;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(59, 177, 151, 0.473);
     backdrop-filter: blur(6px);
     color: var(--mzaC-fg);
     font-size: 22px;
@@ -944,7 +915,7 @@ body {
 
 .mzaCarousel-prev:hover,
 .mzaCarousel-next:hover {
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(15, 125, 129, 0.24);
 }
 
 .mzaCarousel-prev:active,
@@ -968,7 +939,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(17, 137, 141, 0.411);
     border: 0;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease;
@@ -1004,8 +975,8 @@ body {
 }
 
 .mzaCarousel-slide[data-state="active"] .mzaCard {
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55),
-        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    box-shadow: 0 30px 70px rgba(46, 182, 148, 0.596),
+        0 0 0 1px rgba(10, 172, 164, 0.363) inset;
 }
 
 .mzaPar-1,
@@ -1072,8 +1043,8 @@ body {
         height: 100%;
         inset: 0;
         background-image: linear-gradient(0deg,
-                rgba(0, 0, 0, 1) 2%,
-                rgba(0, 0, 0, 0) 25%);
+                rgba(32, 146, 146, 0.644) 2%,
+                rgb(57, 158, 141) 25%);
         content: "";
         z-index: 1;
     }
