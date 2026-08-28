@@ -4,27 +4,19 @@
 
 const header = document.querySelector("header");
 
-
 // Altera o cabeçalho conforme a página é rolada
 window.addEventListener("scroll", function () {
-
   if (window.scrollY > 50) {
-
-    header.style.background = "rgba(8, 13, 18, 0.97)";
-
-    header.style.boxShadow =
-      "0 5px 30px rgba(0, 0, 0, 0.4)";
-
+    header.classList.add("scrolled");
   } else {
-
-    header.style.background = "rgba(8, 13, 18, 0.85)";
-
-    header.style.boxShadow = "none";
+    header.classList.remove("scrolled");
   }
-
 });
 
-///////////////parte da luiza sabino ////////////////////
+// =========================================================
+// GRID ANIMADO DO BACKGROUND
+// =========================================================
+
 const canvas = document.getElementById("grid");
 const ctx = canvas.getContext("2d");
 
@@ -41,7 +33,6 @@ function initGrid() {
 
   for (let x = 0; x < width; x += squareSize) {
     for (let y = 0; y < height; y += squareSize) {
-
       grid.push({
         x,
         y,
@@ -49,7 +40,6 @@ function initGrid() {
         fading: false,
         lastTouched: 0
       });
-
     }
   }
 }
@@ -64,15 +54,12 @@ function getCellAt(x, y) {
 }
 
 window.addEventListener("resize", () => {
-
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
-
   initGrid();
 });
 
 window.addEventListener("mousemove", (e) => {
-
   mouse.x = e.clientX;
   mouse.y = e.clientY;
 
@@ -86,13 +73,11 @@ window.addEventListener("mousemove", (e) => {
 });
 
 function drawGrid() {
-
   ctx.clearRect(0, 0, width, height);
 
   const now = Date.now();
 
   for (let i = 0; i < grid.length; i++) {
-
     const cell = grid[i];
 
     // Começa a desaparecer depois de 500ms
@@ -104,9 +89,8 @@ function drawGrid() {
       cell.fading = true;
     }
 
-    // Fade
+    // Fade out
     if (cell.fading) {
-
       cell.alpha -= 0.02;
 
       if (cell.alpha <= 0) {
@@ -116,7 +100,6 @@ function drawGrid() {
     }
 
     if (cell.alpha > 0) {
-
       const centerX = cell.x + squareSize / 2;
       const centerY = cell.y + squareSize / 2;
 
@@ -129,15 +112,8 @@ function drawGrid() {
         squareSize
       );
 
-      gradient.addColorStop(
-        0,
-        `rgba(0, 255, 204, ${cell.alpha})`
-      );
-
-      gradient.addColorStop(
-        1,
-        `rgba(0, 255, 204, 0)`
-      );
+      gradient.addColorStop(0, `rgba(0, 255, 204, ${cell.alpha})`);
+      gradient.addColorStop(1, `rgba(0, 255, 204, 0)`);
 
       ctx.strokeStyle = gradient;
       ctx.lineWidth = 1.3;
@@ -156,6 +132,10 @@ function drawGrid() {
 
 initGrid();
 drawGrid();
+
+// =========================================================
+// CARROSSEL MZA
+// =========================================================
 
 class MzaCarousel {
   constructor(root, opts = {}) {
@@ -180,7 +160,7 @@ class MzaCarousel {
       x0: 0,
       v: 0,
       t0: 0,
-      aating: false,
+      animating: false,
       hovering: false,
       startTime: 0,
       pausedAt: 0,
@@ -246,6 +226,7 @@ class MzaCarousel {
     }
     this._init();
   }
+
   _init() {
     this._setupDots();
     this._bind();
@@ -255,6 +236,7 @@ class MzaCarousel {
     this._startCycle();
     this._loop();
   }
+
   _preloadImages() {
     this.slides.forEach((sl) => {
       const card = sl.querySelector(".mzaCard");
@@ -266,6 +248,7 @@ class MzaCarousel {
       }
     });
   }
+
   _setupDots() {
     this.pagination.innerHTML = "";
     this.dots = this.slides.map((_, i) => {
@@ -281,6 +264,7 @@ class MzaCarousel {
       return b;
     });
   }
+
   _bind() {
     this.prevBtn.addEventListener("click", () => {
       this.prev();
@@ -330,6 +314,7 @@ class MzaCarousel {
       setTimeout(() => this._measure(), 250)
     );
   }
+
   _measure() {
     const viewRect = this.viewport.getBoundingClientRect();
     const rootRect = this.root.getBoundingClientRect();
@@ -348,6 +333,7 @@ class MzaCarousel {
     this.root.style.setProperty("--mzaPagH", `${pagSpace}px`);
     this.root.style.setProperty("--mzaCardH", `${cardH}px`);
   }
+
   _onTilt(e) {
     const r = this.viewport.getBoundingClientRect();
     const mx = (e.clientX - r.left) / r.width - 0.5;
@@ -355,6 +341,7 @@ class MzaCarousel {
     this.root.style.setProperty("--mzaTiltX", (my * -6).toFixed(3));
     this.root.style.setProperty("--mzaTiltY", (mx * 6).toFixed(3));
   }
+
   _onDragStart(e) {
     if (e.pointerType === "mouse" && e.button !== 0) return;
     e.preventDefault();
@@ -366,6 +353,7 @@ class MzaCarousel {
     this.state.v = 0;
     this.state.pausedAt = performance.now();
   }
+
   _onDragMove(e) {
     if (!this.state.dragging || e.pointerId !== this.state.pointerId) return;
     const dx = e.clientX - this.state.x0;
@@ -375,6 +363,7 @@ class MzaCarousel {
     this.state.pos = this._mod(this.state.index - dx / slideSpan, this.n);
     this._render();
   }
+
   _onDragEnd(e) {
     if (!this.state.dragging || (e && e.pointerId !== this.state.pointerId))
       return;
@@ -395,10 +384,12 @@ class MzaCarousel {
     );
     this.goTo(this._mod(target, this.n));
   }
+
   _startCycle() {
     this.state.startTime = performance.now();
     this._renderProgress(0);
   }
+
   _loop() {
     const step = (t) => {
       if (
@@ -415,15 +406,19 @@ class MzaCarousel {
     };
     this.state.rafId = requestAnimationFrame(step);
   }
+
   _renderProgress(p) {
     this.progressBar.style.transform = `scaleX(${p})`;
   }
+
   prev() {
     this.goTo(this._mod(this.state.index - 1, this.n));
   }
+
   next() {
     this.goTo(this._mod(this.state.index + 1, this.n));
   }
+
   goTo(i, animate = true) {
     const start = this.state.pos || this.state.index;
     const end = this._nearest(start, i);
@@ -441,6 +436,7 @@ class MzaCarousel {
     };
     requestAnimationFrame(step);
   }
+
   _afterSnap(i) {
     this.state.index = this._mod(Math.round(this.state.pos), this.n);
     this.state.pos = this.state.index;
@@ -448,15 +444,18 @@ class MzaCarousel {
     this._render(true);
     this._startCycle();
   }
+
   _nearest(from, target) {
     let d = target - Math.round(from);
     if (d > this.n / 2) d -= this.n;
     if (d < -this.n / 2) d += this.n;
     return Math.round(from) + d;
   }
+
   _mod(i, n) {
     return ((i % n) + n) % n;
   }
+
   _render(markActive = false) {
     const span = this.slideW + this.state.gap;
     const tiltX = parseFloat(
@@ -506,31 +505,19 @@ class MzaCarousel {
   }
 }
 
-
 const carousel = document.getElementById("mzaCarousel");
 
-console.log("CARROSSEL:", carousel);
-console.log(
-  "VIEWPORT:",
-  carousel?.querySelector(".mzaCarousel-viewport")
-);
-console.log(
-  "TRACK:",
-  carousel?.querySelector(".mzaCarousel-track")
-);
-
-// Inicializa o carrossel apenas se o elemento existir
 if (carousel) {
   const mza = new MzaCarousel(carousel, {
     transitionMs: 900
   });
 }
 
-
-// parte de fazer o loading desaparecer
+// =========================================================
+// LOADING SCREEN
+// =========================================================
 
 window.addEventListener("load", () => {
-
   const loadingScreen = document.getElementById("loading-screen");
 
   if (loadingScreen) {
@@ -538,15 +525,13 @@ window.addEventListener("load", () => {
       loadingScreen.classList.add("loading-hidden");
     }, 500);
   }
-
 });
 
-/* =========================================
-   CURSOR NOVOPIXEL
-========================================= */
+// =========================================================
+// CURSOR CUSTOMIZADO NOVOPIXEL
+// =========================================================
 
 (() => {
-
   const cursor = document.getElementById("np-cursor");
   const ring = document.getElementById("np-cursor-ring");
 
@@ -554,12 +539,10 @@ window.addEventListener("load", () => {
 
   let x = 0;
   let y = 0;
-
   let ringX = 0;
   let ringY = 0;
 
   document.addEventListener("mousemove", (event) => {
-
     x = event.clientX;
     y = event.clientY;
 
@@ -568,9 +551,7 @@ window.addEventListener("load", () => {
 
     /* Partícula */
     const particle = document.createElement("div");
-
     particle.className = "np-particle";
-
     particle.style.left = `${x}px`;
     particle.style.top = `${y}px`;
 
@@ -579,17 +560,12 @@ window.addEventListener("load", () => {
     setTimeout(() => {
       particle.remove();
     }, 500);
-
   });
 
-
   /* Movimento suave do anel */
-
   function updateRing() {
-
     ringX += (x - ringX) * 0.08;
     ringY += (y - ringY) * 0.08;
-
 
     ring.style.left = `${ringX}px`;
     ring.style.top = `${ringY}px`;
@@ -599,15 +575,12 @@ window.addEventListener("load", () => {
 
   updateRing();
 
-
   /* Hover */
-
   const elementos = document.querySelectorAll(
     "a, button, input, textarea, select, .card"
   );
 
   elementos.forEach((elemento) => {
-
     elemento.addEventListener("mouseenter", () => {
       document.body.classList.add("np-hover");
     });
@@ -615,12 +588,9 @@ window.addEventListener("load", () => {
     elemento.addEventListener("mouseleave", () => {
       document.body.classList.remove("np-hover");
     });
-
   });
 
-
   /* Clique */
-
   document.addEventListener("mousedown", () => {
     document.body.classList.add("np-click");
   });
@@ -628,5 +598,4 @@ window.addEventListener("load", () => {
   document.addEventListener("mouseup", () => {
     document.body.classList.remove("np-click");
   });
-
 })();
