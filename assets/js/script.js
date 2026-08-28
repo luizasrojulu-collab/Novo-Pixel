@@ -630,3 +630,33 @@ window.addEventListener("load", () => {
   });
 
 })();
+
+
+/* =========================================
+   NOVOPIXEL - VOLTAR AO TOPO
+========================================= */
+
+const backToTop = document.getElementById("backToTop");
+
+
+/* Mostrar / esconder botão */
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 400) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
+
+});
+
+
+/* Voltar para o início */
+backToTop.addEventListener("click", () => {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
