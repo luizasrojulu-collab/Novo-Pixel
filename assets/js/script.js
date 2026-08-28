@@ -518,10 +518,13 @@ console.log(
   "TRACK:",
   carousel?.querySelector(".mzaCarousel-track")
 );
-const mza = new MzaCarousel(document.getElementById("mzaCarousel"), {
-  transitionMs: 900
-});
 
+// Inicializa o carrossel apenas se o elemento existir
+if (carousel) {
+  const mza = new MzaCarousel(carousel, {
+    transitionMs: 900
+  });
+}
 
 
 // parte de fazer o loading desaparecer
@@ -530,9 +533,11 @@ window.addEventListener("load", () => {
 
   const loadingScreen = document.getElementById("loading-screen");
 
-  setTimeout(() => {
-    loadingScreen.classList.add("loading-hidden");
-  }, 500);
+  if (loadingScreen) {
+    setTimeout(() => {
+      loadingScreen.classList.add("loading-hidden");
+    }, 500);
+  }
 
 });
 
@@ -625,4 +630,3 @@ window.addEventListener("load", () => {
   });
 
 })();
-
