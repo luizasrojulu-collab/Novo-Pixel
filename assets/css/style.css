@@ -821,7 +821,7 @@ body {
     inset: 0;
     background: linear-gradient(180deg,
             rgba(39, 175, 141, 0.507),
-            rgba(47, 175, 147, 0.349) 45%,
+            rgba(52, 199, 167, 0.301) 45%,
             rgba(0, 0, 0, 0.25) 100%);
 }
 
@@ -846,7 +846,7 @@ body {
     color: var(--mzaC-accent);
     font-size: clamp(12px, 1.7vw, 14px);
     font-weight: 600;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0);
     cursor: text;
 }
 
@@ -860,7 +860,7 @@ body {
     inset: auto 20px 85px 20px;
     z-index: 2;
     max-width: 60ch;
-    background-color: rgba(42, 134, 111, 0);
+    background-color: rgba(0, 0, 0, 0);
     padding: 20px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
