@@ -15,6 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Silkscreen:wght@400;700&display=swap%22"
         rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/media.css">
 </head>
 
 
@@ -80,17 +81,32 @@
     <header>
         <div class="container">
             <img src="./assets/img/logo-NovoPixel.png" alt="">
-            <nav>
-                <a href="#">Home</a>
-                <a href="#sobre">Sobre Nós</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#mzaCarousel">Depoimentos</a>
-                <a href="#contato">Contato</a>
-            </nav>
 
-            <a href="#contato" class="nav-button">
-                Fale conosco
-            </a>
+            <!-- MENU MOBILE: overlay que fecha o menu ao clicar fora -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+
+            <!-- WRAPPER: em telas grandes é "invisível" (display: contents),
+                 em telas pequenas vira a gaveta do menu -->
+            <div class="nav-wrapper" id="navWrapper">
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#sobre">Sobre Nós</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#mzaCarousel">Depoimentos</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+
+                <a href="#contato" class="nav-button">
+                    Fale conosco
+                </a>
+            </div>
+
+            <!-- BOTÃO HAMBÚRGUER: só aparece no mobile -->
+            <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -100,7 +116,7 @@
 
 
         <!-- Seção principal -->
-        <section class="hero">;
+        <section class="hero">
 
 
             <div class="hero-visual">
@@ -905,6 +921,8 @@
     <script src="./assets/js/script.js"></script>
 
     <script src="./assets/js/pixelPanel.js"></script>
+
+    <script src="./assets/js/menu.js"></script>
 
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/+esm"></script>
 

@@ -1,122 +1,898 @@
-/* Arquivo responsável por deixar a section Sobre responsiva */
- 
- 
-/* Notebook */
-@media (max-width: 1025px) {
- 
-    #sobre {
- 
-        .container {
- 
-            .textoSobre {
-                width: 50%;
- 
-                h3 {
-                    font-size: 26px;
-                }
-            }
- 
-            figure {
-                width: 45%;
- 
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-        }
+/* =========================================================
+   NOVOPIXEL - ARQUIVO RESPONSIVO GERAL (media.css)
+   Cobre: Header, Hero, Serviços, Carrossel de depoimentos,
+   Sobre, Colaboradores, Contato, Rodapé, Cursor, Loading,
+   Botão voltar ao topo e Página de Obrigado.
+
+   IMPORTANTE: este arquivo deve ser importado DEPOIS do
+   style.css no <head> do HTML, assim:
+
+   <link rel="stylesheet" href="./assets/css/style.css">
+   <link rel="stylesheet" href="./assets/css/media.css">
+========================================================= */
+
+
+/* =========================================================
+   MENU MOBILE — ESTRUTURA BASE (todas as telas)
+   Em telas grandes o .nav-wrapper fica "invisível" como
+   caixa (display: contents), então o layout do header
+   continua exatamente igual ao original.
+   O botão hambúrguer e o overlay só aparecem no mobile.
+========================================================= */
+
+.nav-wrapper {
+    display: contents;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #00e5c3;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+body.menu-open .menu-toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+body.menu-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+body.menu-open .menu-toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    z-index: 9997;
+    transition: opacity 0.35s ease;
+}
+
+body.menu-open .menu-overlay {
+    display: block;
+    opacity: 1;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   1300px — Telas grandes / notebooks maiores
+========================================================= */
+@media (max-width: 1300px) {
+
+    .hero-visual {
+        max-width: 95%;
+        gap: 45px;
+    }
+
+    .np-servicos-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
- 
- 
-/* Tablet */
-@media (max-width: 768px) {
- 
-    #sobre {
- 
+
+
+/* =========================================================
+   1200px — Notebooks
+========================================================= */
+@media (max-width: 1200px) {
+
+    /* HEADER */
+    header .container {
+        padding: 0 10px;
+    }
+
+    header .container nav {
+        width: 50%;
+    }
+
+    /* HERO */
+    .escrita {
+        width: 380px;
+    }
+
+    .escrita h2 {
+        font-size: 36px;
+    }
+
+    /* SERVIÇOS */
+    .np-servicos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* SOBRE */
+    .sobre-container {
+        gap: 40px;
+    }
+
+    .hero-card img {
+        width: 400px;
+    }
+
+    /* CONTATO */
+    .contato-area {
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+}
+
+
+/* =========================================================
+   1024px — Tablets grandes / notebooks pequenos
+========================================================= */
+@media (max-width: 1024px) {
+
+    /* HEADER */
+    header {
+        height: 100px;
+    }
+
+    header .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px;
+    }
+
+    header .container img {
+        width: 120px;
+    }
+
+    header .container nav {
+        width: auto;
+        gap: 15px;
+    }
+
+    header .container nav a {
+        font-size: 13px;
+    }
+
+    .nav-button {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    /* HERO */
+    .hero {
+        padding-top: 130px;
+    }
+
+    .hero-visual {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 60px;
+        min-height: auto;
+        padding: 40px 0;
+    }
+
+    .card-hero {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .code-card,
+    .pixel-panel {
+        margin-inline: 0;
+        top: 0;
+    }
+
+    .escrita {
+        width: 90%;
+        max-width: 550px;
+        text-align: center;
+    }
+
+    .escrita-tag {
+        margin: 0 0 15px;
+    }
+
+    .escrita h2 {
+        font-size: 34px;
+    }
+
+    .hero-button {
+        margin: 0 auto;
+    }
+
+    /* SERVIÇOS */
+    .np-servicos {
         height: auto;
- 
-        .container {
-            flex-direction: column;
-            gap: 30px;
- 
-            .textoSobre {
-                width: 90%;
-                height: auto;
-                align-items: center;
-                text-align: center;
- 
-                h3 {
-                    font-size: 25px;
-                }
- 
-                p {
-                    line-height: 1.6;
-                }
- 
-                a {
-                    width: 40%;
-                    height: 50px;
-                }
-            }
- 
-            figure {
-                width: 90%;
-                height: auto;
- 
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-        }
+        padding: 90px 4% 60px;
+    }
+
+    .np-servicos-header h2 {
+        font-size: 40px;
+    }
+
+    /* SOBRE */
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-texto {
+        max-width: 100%;
+    }
+
+    .hero-card img {
+        width: 320px;
+    }
+
+    /* COLABORADORES */
+    .colab-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* CONTATO */
+    .titulo-contato h1 {
+        font-size: clamp(38px, 6vw, 60px);
     }
 }
- 
- 
-/* Celular */
+
+
+/* =========================================================
+   900px — Tablets
+========================================================= */
+@media (max-width: 900px) {
+
+    /* HEADER */
+    header .container {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* GAVETA DE NAVEGAÇÃO */
+    .nav-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 30px;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: min(78%, 320px);
+
+        padding: 110px 40px 40px;
+
+        background: rgba(6, 12, 15, 0.98);
+        backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(0, 229, 195, 0.2);
+
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+        z-index: 9998;
+    }
+
+    body.menu-open .nav-wrapper {
+        transform: translateX(0);
+    }
+
+    header .container nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        height: auto;
+        gap: 24px;
+    }
+
+    header .container nav a {
+        font-size: 17px;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-wrapper .nav-button {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* SERVIÇOS */
+    .np-servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .np-servico-card {
+        min-height: 300px;
+    }
+
+    /* CARROSSEL DE DEPOIMENTOS */
+    .mzaCarousel {
+        height: 55vh;
+    }
+
+    /* COLABORADORES */
+    .colab {
+        padding: 90px 6% 70px;
+    }
+
+    /* CONTATO */
+    .contato-area {
+        grid-template-columns: 1fr;
+    }
+
+    .painel {
+        display: none;
+    }
+
+    .formulario {
+        height: auto;
+        max-height: none;
+    }
+}
+
+
+/* =========================================================
+   768px — Tablets pequenos / celulares grandes
+========================================================= */
+@media (max-width: 768px) {
+
+    /* HEADER */
+    header {
+        height: 90px;
+    }
+
+    header .container img {
+        width: 100px;
+    }
+
+    .nav-button {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    /* HERO */
+    .hero {
+        padding-top: 110px;
+    }
+
+    .card-hero {
+        gap: 15px;
+    }
+
+    .code-card,
+    .pixel-panel {
+        width: 260px;
+        max-width: 260px;
+        padding: 16px;
+    }
+
+    .code {
+        font-size: 13px;
+    }
+
+    .escrita h2 {
+        font-size: 28px;
+    }
+
+    .escrita p {
+        font-size: 14px;
+    }
+
+    /* SERVIÇOS */
+    .np-servicos-header h2 {
+        font-size: 32px;
+    }
+
+    .np-servicos-header p {
+        font-size: 14px;
+    }
+
+    .np-servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* SOBRE */
+    .sobre {
+        padding: 70px 6%;
+    }
+
+    .sobre h2 {
+        font-size: 34px;
+    }
+
+    .sobre p {
+        font-size: 15px;
+    }
+
+    .hero-card img {
+        width: 260px;
+        height: auto;
+    }
+
+    /* COLABORADORES */
+    .colab-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .colab-header h2 {
+        font-size: 30px;
+    }
+
+    /* CONTATO */
+    .contato-container {
+        padding: 70px 0 80px;
+    }
+
+    .titulo-contato h1 {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+    .titulo-contato p {
+        font-size: 14px;
+    }
+
+    .formulario {
+        padding: 30px 22px;
+    }
+
+    .form-header h2 {
+        font-size: 24px;
+    }
+
+    .dupla {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* RODAPÉ */
+    .rodape {
+        padding: 40px 6% 20px;
+    }
+
+    .rodape-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    /* BOTÃO VOLTAR AO TOPO */
+    #backToTop {
+        width: 46px;
+        height: 46px;
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+
+/* =========================================================
+   600px — Celulares médios
+========================================================= */
+@media (max-width: 600px) {
+
+    /* HEADER */
+    header .container {
+        border-radius: 14px;
+    }
+
+    header .container img {
+        width: 90px;
+    }
+
+    /* HERO */
+    .card-hero {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .code-card,
+    .pixel-panel {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .escrita {
+        width: 95%;
+    }
+
+    .escrita-tag {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .escrita h2 {
+        font-size: 24px;
+    }
+
+    .hero-button {
+        font-size: 13px;
+        padding: 12px 18px;
+    }
+
+    /* SERVIÇOS */
+    .np-servicos-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    /* CARROSSEL DE DEPOIMENTOS */
+    .mzaCarousel {
+        height: 60vh;
+        padding: 15px 10px;
+    }
+
+    .mzaCarousel-prev,
+    .mzaCarousel-next {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    /* SOBRE */
+    .sobre h2 {
+        font-size: 28px;
+    }
+
+    .btn-sobre {
+        width: 60%;
+        text-align: center;
+    }
+
+    /* COLABORADORES */
+    .colab-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
+    }
+
+    .colab-card h3 {
+        font-size: 18px;
+    }
+
+    /* CONTATO */
+    .contato-container {
+        width: 92%;
+        padding: 60px 0;
+    }
+
+    .titulo-contato h1 {
+        font-size: 38px;
+    }
+
+    .titulo-contato p {
+        font-size: 13px;
+    }
+
+    .formulario {
+        padding: 25px 18px;
+        border-radius: 16px;
+    }
+
+    .form-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-header h2 {
+        font-size: 22px;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    form button {
+        font-size: 10px;
+        padding: 15px;
+    }
+
+    /* RODAPÉ */
+    .rodape-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .rodape-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+
+/* =========================================================
+   480px — Celulares pequenos
+========================================================= */
 @media (max-width: 480px) {
- 
-    #sobre {
- 
-        padding: 40px 15px;
- 
-        .container {
-            padding: 30px 10px;
-            gap: 20px;
- 
-            .textoSobre {
-                width: 100%;
- 
-                h3 {
-                    font-size: 22px;
-                }
- 
-                p {
-                    font-size: 14px;
-                    line-height: 1.5;
-                }
- 
-                a {
-                    width: 60%;
-                    height: 45px;
-                }
-            }
- 
-            figure {
-                width: 100%;
- 
-                img {
-                    width: 100%;
-                    height: auto;
-                }
- 
-                figcaption {
-                    font-size: 13px;
-                }
-            }
-        }
+
+    /* HEADER */
+    header {
+        height: 80px;
+    }
+
+    header .container {
+        margin-top: 10px;
+        padding: 8px 14px;
+    }
+
+    header .container img {
+        width: 80px;
+    }
+
+    .nav-button {
+        padding: 7px 12px;
+        font-size: 11px;
+    }
+
+    /* HERO */
+    .hero {
+        padding-top: 100px;
+    }
+
+    .code-card,
+    .pixel-panel {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px;
+    }
+
+    .code {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .pixel-canvas-wrap {
+        height: 110px;
+    }
+
+    .escrita h2 {
+        font-size: 22px;
+    }
+
+    .escrita p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* SERVIÇOS */
+    .np-servicos {
+        padding: 70px 5% 50px;
+    }
+
+    .np-servicos-header h2 {
+        font-size: 26px;
+    }
+
+    .np-servico-card {
+        min-height: 260px;
+        padding: 22px 18px;
+    }
+
+    /* SOBRE */
+    .sobre {
+        padding: 50px 6%;
+    }
+
+    .titulo-pequeno {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .sobre h2 {
+        font-size: 24px;
+    }
+
+    .sobre p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .hero-card img {
+        width: 200px;
+    }
+
+    /* COLABORADORES */
+    .colab-header h2 {
+        font-size: 24px;
+    }
+
+    .colab-header p {
+        font-size: 13px;
+    }
+
+    .colab-card {
+        padding: 28px 18px;
+    }
+
+    /* CONTATO */
+    .codigo {
+        font-size: 10px;
+    }
+
+    .titulo-contato h1 {
+        font-size: 30px;
+    }
+
+    /* RODAPÉ */
+    .logo {
+        font-size: 24px;
+    }
+
+    .rodape-coluna h3 {
+        font-size: 15px;
+    }
+
+    /* BOTÃO VOLTAR AO TOPO */
+    #backToTop {
+        width: 40px;
+        height: 40px;
+        right: 14px;
+        bottom: 14px;
+    }
+
+    #backToTop .arrow {
+        font-size: 20px;
+    }
+
+    /* LOADING */
+    .loading-logo {
+        width: 130px;
+    }
+
+    .loading-content p {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    /* PÁGINA DE OBRIGADO */
+    .obrigado-card {
+        padding: 40px 20px;
+    }
+
+    .check {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+    }
+
+    .obrigado-card h1 {
+        font-size: 24px;
+    }
+
+    .obrigado-card p {
+        font-size: 13px;
+    }
+
+    .voltar {
+        padding: 12px 16px;
+        font-size: 10px;
     }
 }
- 
- 
+
+
+/* =========================================================
+   380px — Celulares muito pequenos
+========================================================= */
+@media (max-width: 380px) {
+
+    header .container img {
+        width: 70px;
+    }
+
+    .nav-button {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .code-card,
+    .pixel-panel {
+        max-width: 100%;
+    }
+
+    .escrita h2 {
+        font-size: 20px;
+    }
+
+    .np-servico-card h3 {
+        font-size: 16px;
+    }
+
+    .sobre h2 {
+        font-size: 22px;
+    }
+
+    .titulo-contato h1 {
+        font-size: 26px;
+    }
+
+    .formulario {
+        padding: 20px 14px;
+    }
+
+    .form-header h2 {
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================================
+   CURSOR CUSTOMIZADO — desativar em telas de toque
+   (celulares/tablets não têm mouse, então o cursor
+   customizado precisa ser desligado e o cursor padrão
+   deve voltar a funcionar normalmente)
+========================================================= */
+@media (hover: none) and (pointer: coarse) {
+
+    html,
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: auto !important;
+    }
+
+    #np-cursor,
+    #np-cursor-ring,
+    .np-particle {
+        display: none !important;
+    }
+}
+
+
+/* =========================================================
+   ORIENTAÇÃO PAISAGEM EM CELULARES
+   (evita que seções com altura fixa "estourem" a tela)
+========================================================= */
+@media (max-height: 480px) and (orientation: landscape) {
+
+    .hero-visual {
+        min-height: auto;
+        padding: 30px 0;
+    }
+
+    .np-servicos {
+        height: auto;
+    }
+
+    .mzaCarousel {
+        height: 80vh;
+    }
+
+    #contato {
+        height: auto;
+        padding: 40px 0;
+    }
+}
