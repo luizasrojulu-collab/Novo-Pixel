@@ -1874,7 +1874,7 @@ body.np-click #np-cursor-ring {
 
     height: 100dvh;
     overflow: hidden;
-    top: 180px;
+    top: 70px;
 }
 
 
@@ -3568,7 +3568,7 @@ form button:hover {
 
     color: #000;
 
-    border: 1px solid #00ff88;
+    border: 1px solid #00e5c3;
 
     border-radius: 6px;
 
@@ -3588,12 +3588,12 @@ form button:hover {
 
     background: transparent;
 
-    color: #00ff88;
+    color: #00e5c3;
 
     transform: translateY(-3px);
 
     box-shadow:
-        0 0 20px rgba(0, 255, 136, 0.25);
+        0 0 20px #00e5c3;
 
 }
 
