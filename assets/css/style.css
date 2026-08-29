@@ -1196,6 +1196,18 @@ main {}
     margin: 0 auto;
 }
 
+
+.colab-card:nth-child(2) {
+    animation: flutuarInverso 4s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.colab-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+
+
 .colab-card {
     position: relative;
 
@@ -1209,21 +1221,16 @@ main {}
         0 20px 60px rgba(0, 0, 0, 0.5);
 
     animation: flutuar 4s ease-in-out infinite;
-    transition: 0.3s;
+    transition: .5s !important;
 }
 
-.colab-card:nth-child(2) {
-    animation: flutuarInverso 4s ease-in-out infinite;
-    animation-delay: 0.2s;
-}
-
-.colab-card:nth-child(3) {
-    animation-delay: 0.4s;
-}
 
 .colab-card:hover {
-    transform: translateY(-8px);
+    animation: none;        /* trocado de animation-play-state: paused */
+    transform: scale(1.05);
+    transition: .5s;
     border-color: #40e0d0;
+    z-index: 2;
 }
 
 .colab-avatar {
